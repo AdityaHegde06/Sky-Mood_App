@@ -1,0 +1,18 @@
+package com.example.sky_mood
+
+import MyDataItem
+import retrofit2.http.GET
+import retrofit2.http.Query
+
+
+interface  WeatherApi{
+
+    @GET("weather")
+    fun getData(
+        @Query("city")city:String,
+        @Query("id")apiKey:String
+    ): retrofit2.Call<List<MyDataItem>>
+
+
+
+}
