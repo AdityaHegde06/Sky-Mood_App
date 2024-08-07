@@ -1,0 +1,7 @@
+data class Forecast(
+    val date: String,
+    val humidity: Int,
+    val temperature: Int,
+    val weatherDescription: String,
+    val windSpeed: Double
+)
