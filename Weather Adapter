@@ -1,0 +1,45 @@
+package com.example.sky_mood
+
+import MyDataItem
+import android.annotation.SuppressLint
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+
+import androidx.recyclerview.widget.RecyclerView
+
+
+class WeatherAdapter(private val weatherList: List<MyDataItem>):
+    RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
+
+    class WeatherViewHolder (itemView : View) : RecyclerView.ViewHolder(itemView) {
+        val cityTextView: TextView =itemView.findViewById(R.id.cityTextView)
+        val temperatureTextView:TextView =itemView.findViewById(R.id.temperatureTextView)
+        val weatherDescriptionTextView:TextView= itemView.findViewById(R.id.getWeatherDescription)
+        val humidityTextView: TextView = itemView.findViewById(R.id.humidityTextView)
+        val windSpeedTextView: TextView=itemView.findViewById(R.id.wind_speed)
+
+
+    }
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherViewHolder {
+       val  itemView =LayoutInflater.from(parent.context).inflate(R.layout.item_weather,parent,false)
+        return WeatherViewHolder(itemView)
+    }
+
+    override fun getItemCount()= weatherList.size
+
+    @SuppressLint("SetTextI18n")
+    override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
+        val currentItem = weatherList[position]
+        holder.cityTextView.text=currentItem.city
+        holder.temperatureTextView.text="Temperature : ${currentItem.temperature}°C"
+        holder.weatherDescriptionTextView.text="Weather : ${currentItem.weatherDescription}"
+        holder.humidityTextView.text="Humdity: ${currentItem.humidity}%"
+        holder.windSpeedTextView.text="Wind Speed : ${currentItem.windSpeed}km/h"
+    }
+
+
+}
